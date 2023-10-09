@@ -1,4 +1,5 @@
 import FeedbackItem from './FeedbackItem';
+import PropTypes from 'prop-types';
 
 export default function FeedbackList({ feedback }) {
 	if (!feedback || feedback.length === 0) {
@@ -13,3 +14,13 @@ export default function FeedbackList({ feedback }) {
 		);
 	}
 }
+
+FeedbackList.propTypes = {
+	feedback: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			rating: PropTypes.number.isRequired,
+			text: PropTypes.string.isRequired,
+		})
+	),
+};
