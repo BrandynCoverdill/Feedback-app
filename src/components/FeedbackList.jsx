@@ -1,6 +1,6 @@
 import FeedbackItem from './FeedbackItem';
 import PropTypes from 'prop-types';
-export default function FeedbackList({ feedback, handleDelete }) {
+export default function FeedbackList({feedback, handleDelete}) {
 	if (!feedback || feedback.length === 0) {
 		return <h2>No feedback was given yet.</h2>;
 	} else {
