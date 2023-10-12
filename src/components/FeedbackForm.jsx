@@ -8,7 +8,7 @@ export default function FeedbackForm({handleAdd}) {
 	const [btnDisabled, setBtnDisabled] = useState(true);
 	const [message, setMessage] = useState('');
 	const [rating, setRating] = useState(10);
-	const [dateTime, setDateTime] = useState(new Date().toLocaleString());
+	const [dateTime, setDateTime] = useState(new Date().toString());
 	const [sentReview, setSentReview] = useState(false);
 
 	const handleTextChange = (e) => {
@@ -27,7 +27,7 @@ export default function FeedbackForm({handleAdd}) {
 	function handleSumbit(e) {
 		e.preventDefault();
 		if (text.trim().length >= 10) {
-			setDateTime(new Date());
+			setDateTime(new Date().toString());
 			const newFeedback = {
 				text,
 				rating,

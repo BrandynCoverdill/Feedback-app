@@ -12,12 +12,12 @@ export default function App() {
 	function deleteFeedback(id) {
 		if (window.confirm('Are you sure you want to delete?')) {
 			setFeedback(feedback.filter((f) => id !== f.id));
-			console.log(`Deleted feedback id: ${id}`);
 		}
 	}
 
 	function addFeedback(newFeedback) {
 		newFeedback.id = uuidv4();
+		console.log(newFeedback);
 		setFeedback([newFeedback, ...feedback]);
 	}
 
