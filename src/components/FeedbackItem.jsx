@@ -30,6 +30,7 @@ export default function FeedbackItem({feedback, handleDelete}) {
 						<FaTimes color='purple' />
 					</button>
 					<div className='text-display'>{feedback.text}</div>
+					<div className='date-display'>{feedback.date}</div>
 				</Card>
 			</motion.div>
 		</div>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function FeedbackStats({feedback}) {
+export default function FeedbackStats({feedback, handleFilterChange}) {
 	// Calculate ratings average
 	const avg = (
 		feedback.reduce((acc, curr) => {
@@ -15,6 +15,16 @@ export default function FeedbackStats({feedback}) {
 			<h4>{feedback.length} Reviews</h4>
 			<h4>Average Rating: {isNaN(avg) ? '0' : avg}</h4>
 			{/* TODO: Add a filter option to filter reviews by rating */}
+			<select
+				name='filter'
+				id='filter'
+				onChange={(e) => handleFilterChange(e.target.value)}
+			>
+				<option value='newest'>Newest to Oldest</option>
+				<option value='oldest'>Oldest to Newest</option>
+				<option value='highest'>Highest to Lowest Rated</option>
+				<option value='lowest'>Lowest to Highest Rated</option>
+			</select>
 		</div>
 	);
 }

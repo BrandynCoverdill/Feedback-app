@@ -73,6 +73,12 @@ header {
 	transition: 0.3s;
 }
 
+.date-display {
+	font-weight: bold;
+	font-size: 0.8em;
+	margin-block-start: 0.5em;
+}
+
 .rating li label {
 	position: absolute;
 	top: 50%;
@@ -123,6 +129,10 @@ input:focus {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+#filter {
+	font-size: 1em;
 }
 
 .num-display {
