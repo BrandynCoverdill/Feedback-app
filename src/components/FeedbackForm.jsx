@@ -8,6 +8,7 @@ export default function FeedbackForm({handleAdd}) {
 	const [btnDisabled, setBtnDisabled] = useState(true);
 	const [message, setMessage] = useState('');
 	const [rating, setRating] = useState(10);
+	const [sentReview, setSentReview] = useState(false);
 
 	const handleTextChange = (e) => {
 		if (e.target.value === '') {
@@ -33,28 +34,49 @@ export default function FeedbackForm({handleAdd}) {
 			setText('');
 			setBtnDisabled(true);
 			setRating(10);
+			setSentReview(true);
 		}
+	}
+
+	function handleAddNewReviewSubmit(e) {
+		setSentReview(false);
 	}
 
 	return (
 		<Card>
-			{/* TODO: Add a thank you message after posting a review. Add a button that goes back to enter a new review. */}
-			<form onSubmit={handleSumbit}>
-				<h2>How would you rate your service with us?</h2>
-				<RatingSelect select={(rating) => setRating(rating)} />
-				<div className='input-group'>
-					<input
-						type='text'
-						placeholder='Write a review'
-						onChange={handleTextChange}
-						value={text}
-					/>
-					<Button version='secondary' type='submit' isDisabled={btnDisabled}>
-						Send
-					</Button>
+			{sentReview ? (
+				<div>
+					<h2>Thank you for your feedback!</h2>
+					<form
+						style={{
+							marginTop: '.5em',
+							textAlign: 'center',
+						}}
+						onSubmit={handleAddNewReviewSubmit}
+					>
+						<Button version='secondary' type='submit' isDisabled={false}>
+							Add another review
+						</Button>
+					</form>
 				</div>
-				{message && <div className='message'>{message}</div>}
-			</form>
+			) : (
+				<form onSubmit={handleSumbit}>
+					<h2>How would you rate your service with us?</h2>
+					<RatingSelect select={(rating) => setRating(rating)} />
+					<div className='input-group'>
+						<input
+							type='text'
+							placeholder='Write a review'
+							onChange={handleTextChange}
+							value={text}
+						/>
+						<Button version='secondary' type='submit' isDisabled={btnDisabled}>
+							Send
+						</Button>
+					</div>
+					{message && <div className='message'>{message}</div>}
+				</form>
+			)}
 		</Card>
 	);
 }
